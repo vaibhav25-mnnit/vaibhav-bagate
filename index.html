@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%22 y2=%22100%22><stop offset=%220%25%22 style=%22stop-color:%23a78bfa%22/><stop offset=%22100%25%22 style=%22stop-color:%237ee8fa%22/></linearGradient><rect width=%22100%22 height=%22100%22 rx=%2225%22 fill=%22url(%23g)%22/><text y=%2250%%22 x=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2255%22 fill=%22white%22 font-family=%22sans-serif%22 font-weight=%22bold%22>VB</text></svg>">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,7 +28,7 @@
       --glass-shine:  rgba(255,255,255,0.06);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       background: var(--bg);
@@ -370,20 +371,14 @@
     .contact-desc { color: var(--muted); font-size: 1.05rem; margin-bottom: 3rem; }
     .contact-links { display: flex; flex-direction: column; gap: 1rem; }
     .contact-link {
-      overflow: hidden;
       display: flex; align-items: center; gap: 1.25rem;
       padding: 1.25rem 1.5rem; border-radius: 14px; text-decoration: none; color: var(--text);
       transition: transform .25s, box-shadow .25s, background .2s;
+      overflow: hidden;
     }
     .contact-link:hover { transform: translateX(6px); box-shadow: 0 8px 32px rgba(139,92,246,0.18); background: rgba(255,255,255,0.08); }
     .contact-link-icon { font-family: 'Fira Code', monospace; font-size: .75rem; color: var(--violet); width: 72px; letter-spacing: .08em; flex-shrink: 0; }
-    .contact-link-val {
-      font-size: 1rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      flex: 1;
-    }
+    .contact-link-val { font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
     .contact-link-arrow { margin-left: auto; color: var(--muted); font-size: 1.1rem; }
 
     /* ── Footer ── */
@@ -410,9 +405,6 @@
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
-      .contact-link { padding: 1rem; gap: 0.75rem; }
-      .contact-link-icon { width: 60px; font-size: 0.65rem; }
-      .contact-link-val { font-size: 0.85rem; }
       nav { padding: 1.2rem 1.5rem; }
       .nav-links { display: none; }
       #hero { padding: 7rem 1.5rem 4rem; }
@@ -422,6 +414,9 @@
       #projects { padding: 5rem 1.5rem; }
       .personal-projects { grid-template-columns: 1fr; }
       #contact { padding: 5rem 1.5rem; }
+      .contact-link { padding: 1rem; gap: 0.75rem; }
+      .contact-link-icon { width: 60px; font-size: 0.65rem; }
+      .contact-link-val { font-size: 0.85rem; }
       footer { padding: 1.5rem; flex-direction: column; gap: .75rem; text-align: center; }
     }
   </style>
@@ -487,7 +482,7 @@
   </div>
 
   <section id="about">
-    <div class="about-text reveal">
+    <div class="about-text">
       <div class="section-tag">01 — Origin story</div>
       <h2 class="section-title">Building systems<br>that ship at scale.</h2>
       <div class="section-divider"></div>
@@ -495,20 +490,20 @@
       <p>I specialize in <strong>Java / Spring Boot</strong> backend engineering and <strong>C/C++</strong> systems development. My focus lies deeply in utilizing structural design patterns (like Singleton and Factory), safe multi-threaded task execution via ExecutorServices, and asynchronous microservice communication.</p>
       <p>Recognized twice with the <strong>Samsung COSMOS Award</strong> for high-impact engineering. I graduated with a <strong>B.Tech in Information Technology</strong> from NIT Allahabad in 2023.</p>
     </div>
-    <div class="about-right reveal">
-      <div class="stat-card glass-card">
+    <div class="about-right">
+      <div class="stat-card glass-card" data-aos="zoom-in">
         <div class="stat-num">$6M</div>
         <div class="stat-label">Annual infrastructure cost reduction via device telemetry optimization</div>
       </div>
-      <div class="stat-card glass-card">
+      <div class="stat-card glass-card" data-aos="zoom-in">
         <div class="stat-num">~99%</div>
         <div class="stat-label">OTA firmware rollout latency reduced via concurrent scheduling</div>
       </div>
-      <div class="stat-card glass-card">
+      <div class="stat-card glass-card" data-aos="zoom-in">
         <div class="stat-num">+30%</div>
         <div class="stat-label">Device sales uplift from Device Guard feature delivery</div>
       </div>
-      <div class="stat-card glass-card">
+      <div class="stat-card glass-card" data-aos="zoom-in">
         <div class="stat-num">1000+</div>
         <div class="stat-label">DSA problems solved on various coading platforms.</div>
       </div>
@@ -520,97 +515,97 @@
   </section>
 
   <section id="skills">
-    <div class="skills-heading reveal">
+    <div class="skills-heading">
       <div class="section-tag">02 — The arsenal</div>
       <h2 class="section-title">Tools I build with.</h2>
     </div>
-    <div class="skills-icon-grid reveal">
+    <div class="skills-icon-grid">
 
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java">
         <span class="skill-pill-name">Java</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++">
         <span class="skill-pill-name">C / C++</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript">
         <span class="skill-pill-name">JavaScript</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" alt="Spring Boot">
         <span class="skill-pill-name">Spring Boot</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js">
         <span class="skill-pill-name">Node.js</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="Express.js" style="filter:invert(1)">
         <span class="skill-pill-name">Express.js</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg" alt="Kafka" style="filter:invert(.7) saturate(0) brightness(.9)">
         <span class="skill-pill-name">Apache Kafka</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grpc/grpc-plain.svg" alt="gRPC">
         <span class="skill-pill-name">gRPC</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 17 22 12"/></svg>
         <span class="skill-pill-name">Protobuf</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker">
         <span class="skill-pill-name">Docker</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="CI/CD" style="filter:invert(.8)">
         <span class="skill-pill-name">CI / CD</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
         <span class="skill-pill-name">PostgreSQL</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL">
         <span class="skill-pill-name">MySQL</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB">
         <span class="skill-pill-name">MongoDB</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git">
         <span class="skill-pill-name">Git</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code">
         <span class="skill-pill-name">VS Code</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" alt="IntelliJ IDEA">
         <span class="skill-pill-name">IntelliJ</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux">
         <span class="skill-pill-name">Linux</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" alt="Maven">
         <span class="skill-pill-name">Maven</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
         <span class="skill-pill-name">Multi-threading</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         <span class="skill-pill-name">Microservices</span>
       </div>
-      <div class="skill-pill glass-card">
+      <div class="skill-pill glass-card" data-aos="zoom-in">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
         <span class="skill-pill-name">System Design</span>
       </div>
@@ -619,14 +614,14 @@
   </section>
 
   <section id="projects">
-    <div class="projects-header reveal">
+    <div class="projects-header">
       <div class="section-tag">03 — The journey</div>
       <h2 class="section-title">Where I've<br>left my mark.</h2>
     </div>
 
     <div class="timeline">
 
-      <div class="timeline-item reveal">
+      <div class="timeline-item" data-aos="fade-left">
         <div class="timeline-dot"></div>
         <div class="timeline-card glass-card">
           <div class="tl-header">
@@ -649,7 +644,7 @@
         </div>
       </div>
 
-      <div class="timeline-item reveal">
+      <div class="timeline-item" data-aos="fade-left">
         <div class="timeline-dot intern"></div>
         <div class="timeline-card glass-card intern">
           <div class="tl-header">
@@ -670,7 +665,7 @@
         </div>
       </div>
 
-      <div class="timeline-item reveal">
+      <div class="timeline-item" data-aos="fade-left">
         <div class="timeline-dot intern"></div>
         <div class="timeline-card glass-card intern">
           <div class="tl-header">
@@ -685,7 +680,7 @@
         </div>
       </div>
       
-      <div class="timeline-item reveal">
+      <div class="timeline-item" data-aos="fade-left">
         <div class="timeline-dot intern"></div>
         <div class="timeline-card glass-card intern">
           <div class="tl-header">
@@ -702,12 +697,12 @@
 
     </div>
 
-    <div class="personal-projects-label reveal">
+    <div class="personal-projects-label">
       <h3 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:0">Side quests.</h3>
     </div>
     <div class="personal-projects">
     
-      <div class="mini-card glass-card reveal">
+      <div class="mini-card glass-card" data-aos="fade-up" data-aos-duration="3000">
         <div class="mini-card-top">
           <svg class="mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
           <div class="mini-card-tags"><span>Java</span><span>Spring Boot</span><span>Kafka</span><span>Docker</span></div>
@@ -719,7 +714,7 @@
         </div>
       </div>
     
-      <div class="mini-card glass-card reveal">
+      <div class="mini-card glass-card" data-aos="fade-up" data-aos-duration="3000">
         <div class="mini-card-top">
           <svg class="mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           <div class="mini-card-tags"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
@@ -732,7 +727,7 @@
         </div>
       </div>
     
-      <div class="mini-card glass-card reveal">
+      <div class="mini-card glass-card" data-aos="fade-up" data-aos-duration="3000">
         <div class="mini-card-top">
           <svg class="mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           <div class="mini-card-tags"><span>MERN</span><span>Firebase</span><span>OTP Auth</span></div>
@@ -744,7 +739,7 @@
         </div>
       </div>
     
-      <div class="mini-card glass-card reveal">
+      <div class="mini-card glass-card" data-aos="fade-up" data-aos-duration="3000">
         <div class="mini-card-top">
           <svg class="mini-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           <div class="mini-card-tags"><span>EJS</span><span>Node.js</span><span>MongoDB</span></div>
@@ -760,31 +755,27 @@
   </section>
 
   <section id="contact">
-    <div class="contact-inner reveal">
+    <div class="contact-inner">
       <div class="section-tag">04 — Say hello</div>
       <h2 class="section-title">Let's build<br>something great.</h2>
       <div class="section-divider"></div>
       <p class="contact-desc">Open to backend engineering roles, system architecture opportunities, and interesting side projects. Don't hesitate to reach out.</p>
       <div class="contact-links">
-        <a href="mailto:bagatevaibhav555@gmail.com" class="contact-link glass-card">
+        <a href="mailto:bagatevaibhav555@gmail.com" class="contact-link glass-card" data-aos="zoom-in">
           <span class="contact-link-icon">EMAIL</span>
           <span class="contact-link-val">bagatevaibhav555@gmail.com</span>
           <span class="contact-link-arrow">↗</span>
         </a>
-        <a href="https://linkedin.com/in/vaibhav-bagate" target="_blank" class="contact-link glass-card">
+        <a href="https://linkedin.com/in/vaibhav-bagate" target="_blank" class="contact-link glass-card" data-aos="zoom-in">
           <span class="contact-link-icon">LINKEDIN</span>
           <span class="contact-link-val">vaibhav-bagate</span>
           <span class="contact-link-arrow">↗</span>
         </a>
-        <a href="https://github.com/vaibhav25-mnnit" target="_blank" class="contact-link glass-card">
+        <a href="https://github.com/vaibhav25-mnnit" target="_blank" class="contact-link glass-card" data-aos="zoom-in">
           <span class="contact-link-icon">GITHUB</span>
           <span class="contact-link-val">vaibhav25-mnnit</span>
           <span class="contact-link-arrow">↗</span>
         </a>
-        <a href="tel:+919325763684" class="contact-link glass-card">
-          <span class="contact-link-icon">PHONE</span>
-          <span class="contact-link-val">+91 93257 63684</span>
-          <span class="contact-link-arrow">↗</span>
         </a>
       </div>
     </div>
@@ -795,17 +786,13 @@
     <p>Built with <span>♥</span></p>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 90);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.07 });
-    reveals.forEach(el => observer.observe(el));
+    AOS.init({
+      duration: 800,
+      offset: 120,
+      once: false
+    });
   </script>
 </body>
-</html> 
+</html>
